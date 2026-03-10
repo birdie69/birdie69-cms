@@ -10,6 +10,7 @@ build/
 
 # Strapi generated
 exports/
+.strapi-updater.json
 
 # Uploads (user content)
 public/uploads/*
