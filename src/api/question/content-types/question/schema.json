@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "questions",
+  "info": {
+    "singularName": "question",
+    "pluralName": "questions",
+    "displayName": "Question",
+    "description": "Daily birdie69 couple question sourced from the content team."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "text",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["fun", "deep", "memory", "future", "values", "daily"],
+      "required": true
+    },
+    "scheduledDate": {
+      "type": "date"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
