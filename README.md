@@ -2,7 +2,7 @@
 
 > Strapi v5 Content Management System for **birdie69** — manages the daily question bank.
 
-**Status:** Scaffold pending (Day 3)
+**Status:** ✅ Scaffold complete (Day 3 — 2026-03-10)
 
 ---
 
@@ -20,7 +20,7 @@ The `.NET 8 API` reads questions from Strapi (read-only, via API token).
 
 ## Architecture
 
-See [birdie69-docs/ARCHITECTURE_OVERVIEW.md](https://github.com/learn-claude/birdie69-docs/blob/main/ARCHITECTURE_OVERVIEW.md) — CMS Architecture section.
+See [birdie69-docs/ARCHITECTURE_OVERVIEW.md](https://github.com/birdie69/birdie69-docs/blob/main/ARCHITECTURE_OVERVIEW.md) — CMS Architecture section.
 
 ## Prerequisites
 
