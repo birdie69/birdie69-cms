@@ -40,6 +40,58 @@ npm install
 npm run develop
 ```
 
+## Seeding Question Bank
+
+The seed script creates 28 questions (today through today+27), distributed evenly across four categories (`fun`, `values`, `deep`, `future`). It is **idempotent** — running it multiple times will not create duplicates; any date that already has a question is skipped.
+
+### 1. Start Strapi locally
+
+```bash
+# Start PostgreSQL
+docker-compose up -d
+
+# Install dependencies (first time only)
+npm install
+
+# Start Strapi in dev mode
+npm run develop
+```
+
+Strapi will be available at http://localhost:1337.
+
+### 2. Get an admin API token
+
+1. Open the Strapi admin panel at http://localhost:1337/admin
+2. Navigate to **Settings → API Tokens**
+3. Click **Create new API Token**
+4. Set **Token type** to **Full access**, give it a name (e.g. `seed-script`), and save
+5. Copy the generated token — it is shown only once
+
+### 3. Run the seed script
+
+```bash
+STRAPI_ADMIN_TOKEN=<your-token> npx ts-node scripts/seed-questions.ts
+```
+
+To target a different Strapi instance, also set `STRAPI_URL`:
+
+```bash
+STRAPI_URL=https://cms.birdie69.app STRAPI_ADMIN_TOKEN=<your-token> npx ts-node scripts/seed-questions.ts
+```
+
+The script prints each action (`CREATE` or `SKIP`) and a summary on completion.
+
+### 4. Verify
+
+```bash
+curl "http://localhost:1337/api/questions?pagination[pageSize]=30" \
+  -H "Authorization: Bearer <your-token>"
+```
+
+Expected: 28 records in `data`.
+
+---
+
 ## Jira
 
-[B69 Project](https://narwhal.atlassian.net/projects/B69) — Ticket: B69-3
+[B69 Project](https://narwhal.atlassian.net/projects/B69) — Tickets: B69-3, B69-17
