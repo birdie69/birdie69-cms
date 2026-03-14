@@ -7,7 +7,7 @@
  *   STRAPI_ADMIN_TOKEN=<token> npx ts-node scripts/seed-questions.ts
  */
 
-const STRAPI_URL = process.env.STRAPI_URL ?? 'http://localhost:1337';
+const STRAPI_URL = process.env.STRAPI_URL ?? 'http://127.0.0.1:1337';
 const ADMIN_TOKEN = process.env.STRAPI_ADMIN_TOKEN;
 
 if (!ADMIN_TOKEN) {
@@ -297,5 +297,6 @@ async function main(): Promise<void> {
 
 main().catch((err) => {
   console.error('\nSeed failed:', err.message);
+  if (err.cause) console.error('Caused by:', err.cause);
   process.exit(1);
 });
