@@ -25,7 +25,6 @@ COPY --from=builder /opt/app/package*.json ./
 RUN npm ci --omit=dev
 
 COPY --from=builder /opt/app/dist ./dist
-COPY --from=builder /opt/app/build ./build
 COPY --from=builder /opt/app/config ./config
 COPY --from=builder /opt/app/public ./public
 
