@@ -11,8 +11,10 @@ RUN npm ci
 
 COPY . .
 
-# strapi build: compiles TypeScript + builds admin panel
+# 1. Build admin panel (Vite)
 RUN npm run build
+# 2. Compile server TypeScript + copy JSON schemas that tsc leaves behind
+RUN npm run build:server
 
 # ── Stage 2: Runtime ──────────────────────────────────────────────────────────
 FROM node:20-alpine AS runtime
@@ -24,6 +26,7 @@ WORKDIR /opt/app
 COPY --from=builder /opt/app/package*.json ./
 RUN npm ci --omit=dev
 
+COPY --from=builder /opt/app/tsconfig.json ./tsconfig.json
 COPY --from=builder /opt/app/dist ./dist
 COPY --from=builder /opt/app/build ./build
 COPY --from=builder /opt/app/config ./config

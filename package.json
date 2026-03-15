@@ -6,6 +6,7 @@
     "develop": "node scripts/develop.js",
     "start": "strapi start",
     "build": "strapi build",
+    "build:server": "node scripts/build-server.js",
     "strapi": "strapi"
   },
   "dependencies": {
